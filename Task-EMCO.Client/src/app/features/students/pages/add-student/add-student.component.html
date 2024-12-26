@@ -1,0 +1,66 @@
+<div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4">Add Student</h1>
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" class="max-w-md">
+      <mat-form-field class="w-full">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" placeholder="Ex. John">
+        <mat-error *ngIf="studentForm.get('firstName')?.hasError('required')">First Name is required</mat-error>
+        <mat-error *ngIf="studentForm.get('firstName')?.hasError('minlength')">First Name must be at least 3 characters</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="w-full">
+        <mat-label>Second Name</mat-label>
+        <input matInput formControlName="secondName" placeholder="Ex. Doe">
+        <mat-error *ngIf="studentForm.get('secondName')?.hasError('required')">Second Name is required</mat-error>
+        <mat-error *ngIf="studentForm.get('secondName')?.hasError('minlength')">Second Name must be at least 3 characters</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="w-full">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" placeholder="Ex. Smith">
+        <mat-error *ngIf="studentForm.get('lastName')?.hasError('maxlength')">Last Name cannot exceed 100 characters</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="w-full">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" placeholder="Select Date of Birth">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="studentForm.get('dateOfBirth')?.hasError('required')">Date of Birth is required</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="w-full">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="isMale">
+          <mat-option [value]="true">Male</mat-option>
+          <mat-option [value]="false">Female</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field class="w-full">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Ex. john.doe@example.com">
+        <mat-error *ngIf="studentForm.get('email')?.hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="studentForm.get('email')?.hasError('email')">Invalid email format</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="w-full">
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="phoneNumber" placeholder="Ex. +1234567890">
+        <mat-error *ngIf="studentForm.get('phoneNumber')?.hasError('required')">Phone number is required</mat-error>
+        <mat-error *ngIf="studentForm.get('phoneNumber')?.hasError('pattern')">Invalid phone number</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="w-full">
+        <mat-label>Subjects</mat-label>
+        <mat-select formControlName="subjects" multiple>
+          <mat-option *ngFor="let subject of availableSubjects" [value]="subject.id">{{ subject.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <div class="mt-4">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!studentForm.valid">Add Student</button>
+        <button mat-button routerLink="/students">Cancel</button>
+      </div>
+    </form>
+</div>

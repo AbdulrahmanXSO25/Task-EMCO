@@ -1,0 +1,29 @@
+<div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4">Edit Subject</h1>
+    <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()" class="max-w-md">
+      <mat-form-field class="w-full">
+        <mat-label>Code</mat-label>
+        <input matInput formControlName="code" placeholder="Ex. CS101">
+        <mat-error *ngIf="subjectForm.get('code')?.hasError('required')">Code is required</mat-error>
+        <mat-error *ngIf="subjectForm.get('code')?.hasError('pattern')">Code must be 2-5 uppercase letters followed by 3 digits</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="w-full">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" placeholder="Ex. Introduction to Computer Science">
+        <mat-error *ngIf="subjectForm.get('name')?.hasError('required')">Name is required</mat-error>
+        <mat-error *ngIf="subjectForm.get('name')?.hasError('minlength')">Name must be at least 3 characters</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="w-full">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" rows="4"></textarea>
+        <mat-error *ngIf="subjectForm.get('description')?.hasError('maxlength')">Description cannot exceed 500 characters</mat-error>
+      </mat-form-field>
+  
+      <div class="mt-4">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!subjectForm.valid">Update Subject</button>
+        <button mat-button routerLink="/subjects">Cancel</button>
+      </div>
+    </form>
+</div>

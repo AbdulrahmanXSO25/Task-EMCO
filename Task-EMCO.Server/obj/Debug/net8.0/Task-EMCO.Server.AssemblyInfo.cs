@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Task-EMCO.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+862341dac96c10a2d231a65b00f36ff852d2e6ef")]
 [assembly: System.Reflection.AssemblyProductAttribute("Task-EMCO.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Task-EMCO.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,13 @@
+.confirmation-modal {
+    padding: 1.5rem;
+    min-width: 300px;
+}
+
+mat-dialog-content {
+    margin: 1rem 0;
+}
+    
+mat-dialog-actions {
+    margin-top: 1.5rem;
+    gap: 1rem;
+}
